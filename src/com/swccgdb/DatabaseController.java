@@ -51,17 +51,14 @@ public class DatabaseController
      * @param filters
      *            - an array containing all of the possible filter terms
      */
-    public List<String> getFilteredList(List<String> column,
-	    List<String> op, List<String> term)
+    public List<String> getFilteredList(List<String> column, List<String> op,
+	    List<String> term)
     {
 	/*
-	 *TODO:
-	 * 1. Implement OR and NOT 
-	 * 2. Implement Lightside and darkside
-	 * 3. Implement Remove
+	 * TODO: 1. Implement OR and NOT 2. Implement Lightside and darkside 3.
+	 * Implement Remove
 	 */
-	
-	
+
 	String wherefilter = "";
 
 	if (column.size() != 0)
@@ -74,7 +71,7 @@ public class DatabaseController
 	    for (int index = 0; index < column.size(); index++)
 	    {
 		String t = "";
-		if(number(column.get(index)))
+		if (number(column.get(index)))
 		    t = term.get(index);
 		else if (op.get(index).equals("LIKE"))
 		    t = "\'%" + term.get(index) + "%\'";
@@ -95,7 +92,6 @@ public class DatabaseController
 		wherefilter += search.get(index);
 	    }
 	}
-	
 
 	Connection conn = null;
 	ResultSet rs = null;
@@ -105,8 +101,9 @@ public class DatabaseController
 	try
 	{
 	    conn = openConnection();
-	    String stmt = "SELECT cardname FROM swd " + wherefilter + "ORDER BY cardname ASC";
-	    System.out.println(stmt);
+	    String stmt = "SELECT cardname FROM swd " + wherefilter
+		    + "ORDER BY cardname ASC";
+	    // System.out.println(stmt);
 	    PreparedStatement ps = conn.prepareStatement(stmt);
 	    rs = ps.executeQuery();
 
@@ -152,7 +149,7 @@ public class DatabaseController
 	    return true;
 	return false;
     }
-    
+
     /**
      * This function is used to change the number in the users inventory of a
      * particular card.
@@ -212,7 +209,7 @@ public class DatabaseController
      */
     public String getCardInfo(String cardname)
     {
-	System.out.println(cardname);
+	// System.out.println(cardname);
 	Connection conn = null;
 	ResultSet rs = null;
 	String result = "";

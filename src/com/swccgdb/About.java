@@ -40,6 +40,7 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JEditorPane;
 
+@SuppressWarnings("serial")
 public class About extends JDialog
 {
     static About dialog;
